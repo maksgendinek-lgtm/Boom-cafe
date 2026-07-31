@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://boom-cafe.pages.dev/sitemap.xml

@@ -1,0 +1,262 @@
+@import "tailwindcss";
+
+/* ─── Premium Palette ─── */
+@theme {
+  --color-deep-900: #FAF8F5;
+  --color-deep-800: #F5F0EA;
+  --color-deep-700: #FFFFFF;
+  --color-deep-600: #E0D8CF;
+  --color-deep-500: #C4B8A8;
+
+  --color-stone-400: #6B6B6B;
+  --color-stone-300: #2B2B2B;
+  --color-stone-100: #1a1a1a;
+
+  --color-terracotta: #6D0C0E;
+  --color-terracotta-dark: #4A0708;
+  --color-terracotta-light: #8B1214;
+
+  --color-teal: #4A7C6F;
+  --color-teal-light: #5E9B8A;
+  --color-teal-dark: #3D6659;
+
+  --color-gold: #D4A03C;
+  --color-gold-light: #E8C06A;
+  --color-gold-dark: #B8832E;
+
+  --color-cream: #2B2B2B;
+  --color-cream-dark: #1a1a1a;
+
+  --font-display: 'Fraunces', 'Georgia', serif;
+  --font-sans: 'Outfit', 'system-ui', sans-serif;
+}
+
+/* ─── Base Styles ─── */
+html {
+  scroll-behavior: auto; /* Lenis handles smooth scroll */
+}
+
+body {
+  font-family: var(--font-sans);
+  /* Multi-layer animated gradient background — canyon dark + warm white */
+  background:
+    /* noise/grain overlay (fine texture) */
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.18'/%3E%3C/svg%3E"),
+    /* animated warm gradient */
+    linear-gradient(135deg, #FAF8F5 0%, #F5F0EA 50%, #FAF8F5 100%);
+  background-repeat: repeat, no-repeat;
+  background-size: 256px 256px, 400% 400%;
+  background-position: 0 0, 0% 50%;
+  animation: gradientShift 30s ease infinite;
+  color: var(--color-stone-300);
+  margin: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ambient gradient "breathing" */
+@keyframes gradientShift {
+  0%   { background-position: 0 0,   0% 50%; }
+  50%  { background-position: 0 0, 100% 50%; }
+  100% { background-position: 0 0,   0% 50%; }
+}
+
+/* ─── Premium Grain Overlay ─── */
+.grain-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.025;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.5'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Premium Glass Card ───
+ * 60fps: hover uses transform/opacity only (no background-color/border-color)
+ */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.88), rgba(250, 248, 245, 0.92));
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(224, 216, 207, 0.4);
+  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.04);
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 20px rgba(109, 12, 14, 0.06);
+  border-color: rgba(109, 12, 14, 0.25);
+}
+
+.glass-card-teal:hover {
+  transform: translateY(-4px) scale(1.01);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08), 0 0 20px rgba(74, 124, 111, 0.06);
+  border-color: rgba(74, 124, 111, 0.25);
+}
+
+/* ─── Glow Icon ─── */
+.glow-icon {
+  box-shadow: 0 0 20px rgba(109, 12, 14, 0.08);
+}
+
+.glow-icon-teal {
+  box-shadow: 0 0 20px rgba(74, 124, 111, 0.08);
+}
+
+/* ─── Gradient Text ─── */
+.gradient-text {
+  background: linear-gradient(135deg, #6D0C0E 0%, #8B1214 50%, #A8452F 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-warm {
+  background: linear-gradient(135deg, #D4A03C 0%, #6D0C0E 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Fog / Mist Animation ─── */
+.fog-layer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.fog-particle {
+  position: absolute;
+  border-radius: 50%;
+  background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.8) 0%, transparent 70%);
+  filter: blur(60px);
+  animation: fogDrift 25s ease-in-out infinite alternate;
+}
+
+.fog-particle:nth-child(1) {
+  width: 60%;
+  height: 40%;
+  top: 10%;
+  left: -10%;
+  animation-duration: 22s;
+}
+
+.fog-particle:nth-child(2) {
+  width: 50%;
+  height: 30%;
+  bottom: 20%;
+  right: -5%;
+  animation-duration: 28s;
+  animation-delay: -5s;
+}
+
+.fog-particle:nth-child(3) {
+  width: 40%;
+  height: 50%;
+  top: 40%;
+  left: 30%;
+  animation-duration: 30s;
+  animation-delay: -10s;
+  opacity: 0.4;
+}
+
+@keyframes fogDrift {
+  0%   { transform: translate(0, 0) scale(1); opacity: 0.3; }
+  25%  { transform: translate(30px, -20px) scale(1.05); opacity: 0.5; }
+  50%  { transform: translate(60px, 10px) scale(0.95); opacity: 0.3; }
+  75%  { transform: translate(20px, -30px) scale(1.1); opacity: 0.45; }
+  100% { transform: translate(50px, 0) scale(1); opacity: 0.35; }
+}
+
+/* ─── Section Gradient Dividers (smooth transitions) ─── */
+.section-divider-top {
+  height: 120px;
+  background: linear-gradient(to bottom, transparent, rgba(250, 248, 245, 0.95));
+  pointer-events: none;
+}
+
+.section-divider-bottom {
+  height: 120px;
+  background: linear-gradient(to top, transparent, rgba(250, 248, 245, 0.95));
+  pointer-events: none;
+}
+
+/* ─── Premium Button Micro-interaction ───
+ * 60fps: hover uses transform/opacity only
+ */
+.premium-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.3s ease-out, opacity 0.3s ease-out;
+  overflow: hidden;
+  will-change: transform;
+}
+
+.premium-btn:hover {
+  transform: scale(1.02);
+}
+
+.premium-btn:active {
+  transform: scale(0.98);
+}
+
+.premium-btn-terracotta {
+  background: linear-gradient(to bottom, #8B1214 0%, #6D0C0E 50%, #4A0708 100%);
+  color: #fff;
+  box-shadow: 0 8px 20px rgba(109, 12, 14, 0.3);
+}
+
+.premium-btn-terracotta:hover {
+  box-shadow: 0 12px 28px rgba(109, 12, 14, 0.45);
+  transform: scale(1.03);
+}
+
+.premium-btn-ghost {
+  border: 2px solid rgba(109, 12, 14, 0.3);
+  color: var(--color-terracotta);
+  background: transparent;
+}
+
+.premium-btn-ghost:hover {
+  border-color: rgba(109, 12, 14, 0.5);
+  box-shadow: 0 4px 20px rgba(109, 12, 14, 0.1);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: rgba(109, 12, 14, 0.2);
+  color: #fff;
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #E0D8CF;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #C4B8A8;
+}
