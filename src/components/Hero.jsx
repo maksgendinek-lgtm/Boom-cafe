@@ -150,7 +150,7 @@ export default function Hero() {
         >
           <motion.div variants={heroItem} className="mb-6">
             <img
-              src="/logo.png"
+              src="/Boom-cafe/logo.png"
               alt="BOOM"
               className="h-24 sm:h-32 md:h-40 lg:h-48 w-auto mx-auto object-contain"
             />
