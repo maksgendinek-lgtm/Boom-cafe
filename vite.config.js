@@ -28,6 +28,7 @@ export default defineConfig({
       },
     }),
   ],
+  base: '/Boom-cafe/',
   server: {
     host: true,
     allowedHosts: true,
