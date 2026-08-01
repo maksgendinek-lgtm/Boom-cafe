@@ -12,15 +12,15 @@ export default defineConfig({
       webp: {
         quality: 85,
       },
-      /* Оптимизация PNG/JPG на случай появления в будущем */
+      /* Отключаем PNG/JPG оптимизацию — может ломать существующие изображения */
       png: {
-        quality: 80,
+        enabled: false,
       },
       jpeg: {
-        quality: 80,
+        enabled: false,
       },
       jpg: {
-        quality: 80,
+        enabled: false,
       },
       /* Отключаем SVG — нет зависимости svgo */
       svg: {
