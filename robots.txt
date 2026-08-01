@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://maksgendinek-lgtm.github.io/Boom-cafe/sitemap.xml
