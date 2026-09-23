@@ -82,6 +82,12 @@ export default function Footer() {
           <p className="text-deep-500 text-xs">
             © {year} BOOM. {lang === 'ru' ? 'Все права защищены.' : 'All rights reserved.'}
           </p>
+          <a
+            href="#/privacy"
+            className="text-deep-500 text-xs hover:text-terracotta transition-colors duration-300 underline-offset-4 hover:underline"
+          >
+            {lang === 'ru' ? 'Политика конфиденциальности' : 'Privacy Policy'}
+          </a>
           <p className="text-deep-500 text-xs">
             {lang === 'ru' ? 'Боомское ущелье, Кыргызстан' : 'Boom Gorge, Kyrgyzstan'}
           </p>

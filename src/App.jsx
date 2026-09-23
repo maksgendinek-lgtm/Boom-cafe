@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react'
 import { LanguageProvider } from './context/LanguageContext'
 import Header from './components/Header'
 import Hero from './components/Hero'
@@ -12,10 +13,24 @@ import CustomCursor from './components/CustomCursor'
 import ScrollProgress from './components/ScrollProgress'
 import SectionWave from './components/SectionWave'
 import PremiumBackground from './components/PremiumBackground'
+import PrivacyPage from './pages/PrivacyPage'
 import { useLenis } from './utils/motion'
 
 function AppContent() {
   useLenis()
+
+  /* Простой hash-роутинг: страница политики открывается по #/privacy */
+  const [route, setRoute] = useState(window.location.hash)
+
+  useEffect(() => {
+    const onHashChange = () => setRoute(window.location.hash)
+    window.addEventListener('hashchange', onHashChange)
+    return () => window.removeEventListener('hashchange', onHashChange)
+  }, [])
+
+  if (route.startsWith('#/privacy')) {
+    return <PrivacyPage />
+  }
 
   return (
     <>
