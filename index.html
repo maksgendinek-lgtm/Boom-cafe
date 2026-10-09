@@ -33,11 +33,49 @@
 
     <meta name="theme-color" content="#1a1a1a" />
 
+    <!-- Структурированные данные: помогают Google показать карточку кафе в выдаче -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Restaurant",
+      "name": "BOOM CAFE",
+      "description": "Премиальное кафе в Боомском ущелье на трассе Бишкек — Иссык-Куль. Вкусная еда, горячий кофе, национальная кухня и отдых в горах.",
+      "url": "https://maksgendinek-lgtm.github.io/Boom-cafe/",
+      "telephone": "+996 558 170 757",
+      "image": "https://maksgendinek-lgtm.github.io/Boom-cafe/logo.png",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Улица ЭМ-07, 1",
+        "addressRegion": "Боомское ущелье",
+        "addressCountry": "KG"
+      },
+      "servesCuisine": ["Кыргызская кухня", "Европейская кухня"],
+      "priceRange": "$$",
+      "openingHours": "Mo-Su 00:00-23:59",
+      "sameAs": ["https://2gis.kg/search/Улица%20ЭМ-07%2C%201"]
+    }
+    </script>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
   </head>
   <body>
+    <!-- SEO: статический текст для поисковиков (виден без JavaScript) -->
+    <noscript>
+      <h1>BOOM CAFE — кафе в Боомском ущелье, трасса Бишкек — Иссык-Куль</h1>
+      <p>
+        BOOM CAFE — премиальное кафе в Боомском ущелье на трассе Бишкек — Иссык-Куль (Кыргызстан).
+        Идеальная остановка для отдыха, вкусной еды, горячего кофе и национальной кухни в самом сердце гор,
+        у канатного ущелья. Отдых в горах, еда в дорогу, кофе с видом на горы.
+      </p>
+      <p>
+        Адрес: улица ЭМ-07, 1, Боомское ущелье, трасса Бишкек — Иссык-Куль, Кыргызстан.
+        Телефон: +996 558 170 757. Работаем ежедневно.
+      </p>
+      <p>Сайт: https://maksgendinek-lgtm.github.io/Boom-cafe/</p>
+      <p>Для просмотра полного меню и бронирования включите JavaScript в браузере.</p>
+    </noscript>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
